@@ -1,0 +1,415 @@
+/*
+ * Компонентные стили проекта Ретрознак
+ * Содержит стили для основных UI компонентов и секций сайта
+ */
+
+/* ============================================================
+   HEADER И НАВИГАЦИЯ
+   ============================================================ */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  background-color: var(--retro-light);
+  border-bottom: 1px solid rgba(31, 41, 55, 0.1);
+  backdrop-filter: blur(10px);
+  transition: var(--transition-smooth);
+}
+
+.header.scrolled {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: rgba(249, 250, 251, 0.95);
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  min-height: 60px;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--retro-gold);
+  text-decoration: none;
+}
+
+.navbar-menu {
+  display: none;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-menu a {
+  color: var(--retro-dark);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition-smooth);
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.navbar-menu a:hover,
+.navbar-menu a:focus {
+  color: var(--retro-gold);
+  background-color: rgba(212, 175, 55, 0.1);
+}
+
+/* Мобильное меню */
+.mobile-menu-toggle {
+  display: block;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: var(--retro-dark);
+}
+
+@media (min-width: 768px) {
+  .navbar-menu {
+    display: flex;
+  }
+
+  .mobile-menu-toggle {
+    display: none;
+  }
+}
+
+/* ============================================================
+   HERO СЕКЦИЯ
+   ============================================================ */
+.hero {
+  padding: var(--section-padding) 0;
+  background: linear-gradient(135deg, var(--retro-light) 0%, rgba(212, 175, 55, 0.1) 100%);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('../images/hero/retroznak-bg-pattern.svg');
+  background-size: 100px 100px;
+  background-repeat: repeat;
+  opacity: 0.03;
+  z-index: 1;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  color: var(--retro-gold);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  color: var(--retro-blue);
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
+/* ============================================================
+   СЕКЦИИ КОНТЕНТА
+   ============================================================ */
+.about,
+.products,
+.process,
+.clients,
+.contact {
+  padding: var(--section-padding) 0;
+}
+
+.about {
+  background-color: var(--retro-light);
+}
+
+.products {
+  background-color: #FAFAFA;
+}
+
+.process {
+  background-color: var(--retro-light);
+}
+
+.clients {
+  background-color: #FAFAFA;
+}
+
+.contact {
+  background-color: var(--retro-dark);
+  color: var(--retro-light);
+}
+
+.contact h2 {
+  color: var(--retro-light);
+}
+
+/* ============================================================
+   КАРТОЧКИ ПРОДУКТОВ
+   ============================================================ */
+.product-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+@media (min-width: 640px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.product-card {
+  background: white;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: var(--transition-smooth);
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
+}
+
+.product-image {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+}
+
+.product-content {
+  padding: 1.5rem;
+}
+
+.product-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--retro-dark);
+  margin-bottom: 0.5rem;
+}
+
+.product-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--retro-gold);
+  margin-bottom: 1rem;
+}
+
+.product-description {
+  color: #6B7280;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   ФОРМЫ
+   ============================================================ */
+
+/* Сообщения форм */
+.form-message {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  display: none;
+}
+
+.form-message.success {
+  background-color: #10B981;
+  color: white;
+  border: 1px solid #059669;
+}
+
+.form-message.error {
+  background-color: #EF4444;
+  color: white;
+  border: 1px solid #DC2626;
+}
+
+/* Ошибки полей */
+.field-error {
+  color: #EF4444;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  display: none;
+}
+
+.form-input.error,
+.form-textarea.error,
+.form-select.error {
+  border-color: #EF4444;
+  background-color: rgba(239, 68, 68, 0.1);
+}
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  font-weight: 500;
+  color: var(--retro-light);
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #374151;
+  border-radius: 0.5rem;
+  background-color: #374151;
+  color: var(--retro-light);
+  transition: var(--transition-smooth);
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+  outline: none;
+  border-color: var(--retro-gold);
+  background-color: #4B5563;
+}
+
+.form-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  background-color: var(--retro-dark);
+  color: var(--retro-light);
+  padding: 3rem 0 2rem;
+  text-align: center;
+}
+
+.footer-content {
+  display: grid;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .footer-content {
+    grid-template-columns: repeat(3, 1fr);
+    text-align: left;
+  }
+}
+
+.footer-section h3 {
+  color: var(--retro-gold);
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
+}
+
+.footer-section p,
+.footer-section a {
+  color: #D1D5DB;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.footer-section a {
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+.footer-section a:hover,
+.footer-section a:focus {
+  color: var(--retro-gold);
+}
+
+.footer-bottom {
+  border-top: 1px solid #374151;
+  padding-top: 2rem;
+  font-size: 0.875rem;
+  color: #9CA3AF;
+}
+
+/* ============================================================
+   АНИМАЦИИ
+   ============================================================ */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ============================================================
+   LOADING STATES
+   ============================================================ */
+.loading {
+  position: relative;
+  overflow: hidden;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir:*)",
+      "WebSearch",
+      "mcp__context7__resolve-library-id",
+      "mcp__context7__get-library-docs",
+      "Bash(npx create-vite:*)",
+      "Bash(npm install)",
+      "Bash(npm install:*)",
+      "Bash(npm run dev:*)",
+      "Bash(md-tree explode:*)",
+      "Bash(rm:*)",
+      "Bash(ren:*)",
+      "Bash(grep:*)",
+      "mcp__browsermcp__browser_navigate",
+      "mcp__browsermcp__browser_type",
+      "Bash(findstr:*)",
+      "Bash(md-tree:*)",
+      "Bash(python:*)",
+      "Bash(node:*)",
+      "Bash(php:*)",
+      "mcp__browsermcp__browser_wait",
+      "mcp__browsermcp__browser_click",
+      "mcp__browsermcp__browser_get_console_logs"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
