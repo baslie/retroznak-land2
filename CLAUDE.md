@@ -56,6 +56,7 @@ git push origin master
 
 ### Обязательные источники документации:
 - **Context7 MCP Server** — ВСЕГДА использовать для поиска актуальной документации по HTML, CSS, JavaScript, Tailwind CSS
+- **Browser MCP** — для проверки сайта в браузере пользователя (используется Chrome)
 - **MDN Web Docs** — официальная документация веб-стандартов через Context7
 - **Tailwind CSS Documentation** — официальная документация фреймворка через Context7
 

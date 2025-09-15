@@ -83,15 +83,19 @@
 /* ============================================================
    HERO СЕКЦИЯ
    ============================================================ */
-.hero {
+.hero-section {
   padding: var(--section-padding) 0;
-  background: linear-gradient(135deg, var(--retro-light) 0%, rgba(212, 175, 55, 0.1) 100%);
+  background: linear-gradient(135deg, var(--retro-blue) 0%, var(--retro-green) 100%);
+  color: var(--retro-light);
   text-align: center;
   position: relative;
   overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
 }
 
-.hero::before {
+.hero-section::before {
   content: '';
   position: absolute;
   top: 0;
@@ -101,62 +105,315 @@
   background-image: url('../images/hero/retroznak-bg-pattern.svg');
   background-size: 100px 100px;
   background-repeat: repeat;
-  opacity: 0.03;
+  opacity: 0.05;
   z-index: 1;
 }
 
-.hero > * {
+.hero-section > * {
   position: relative;
   z-index: 2;
 }
 
-.hero h1 {
+.hero-title {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 800;
   color: var(--retro-gold);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 1rem;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+  max-width: 20ch;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .hero-subtitle {
-  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
-  color: var(--retro-blue);
-  margin-bottom: 2rem;
-  font-weight: 500;
+  font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+  color: var(--retro-light);
+  margin-bottom: 3rem;
+  font-weight: 400;
+  line-height: 1.4;
+  max-width: 40ch;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.9;
+}
+
+.hero-image {
+  margin: 3rem 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+.hero-main-image {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+  border-radius: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-image-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, var(--retro-gold) 0%, transparent 70%);
+  opacity: 0.15;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  border-radius: 50%;
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.15;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.25;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+.hero-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+/* Responsive стили для Hero секции */
+@media (max-width: 640px) {
+  .hero-section {
+    min-height: 100svh; /* Для мобильных используем svh */
+    padding: 2rem 0;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 8vw, 3rem);
+    margin-bottom: 1rem;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1rem, 4vw, 1.25rem);
+    margin-bottom: 2rem;
+  }
+
+  .hero-image {
+    margin: 2rem 0;
+    max-width: 90%;
+  }
+
+  .hero-cta {
+    margin-top: 2rem;
+  }
+
+  .hero-section .btn-primary,
+  .hero-section .btn-secondary {
+    width: 100%;
+    max-width: 280px;
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .hero-cta {
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-section {
+    min-height: 100vh;
+  }
+
+  .hero-image {
+    max-width: 500px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-image {
+    max-width: 600px;
+  }
+}
+
+/* Кнопки для Hero секции */
+.hero-section .btn-primary {
+  background-color: var(--retro-gold);
+  color: var(--retro-dark);
+  border-color: var(--retro-gold);
+  font-weight: 600;
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+}
+
+.hero-section .btn-secondary {
+  background-color: transparent;
+  color: var(--retro-light);
+  border-color: var(--retro-light);
+  font-weight: 600;
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+}
+
+.hero-section .btn-secondary:hover,
+.hero-section .btn-secondary:focus {
+  background-color: var(--retro-light);
+  color: var(--retro-dark);
 }
 
 /* ============================================================
    СЕКЦИИ КОНТЕНТА
    ============================================================ */
-.about,
-.products,
-.process,
-.clients,
-.contact {
+
+/* Общие стили для всех секций */
+.matrix-section,
+.history-section,
+.guarantees-section,
+.social-proof-section,
+.contact-form-section,
+.faq-section {
   padding: var(--section-padding) 0;
 }
 
-.about {
+/* Матрица продуктов */
+.matrix-section {
   background-color: var(--retro-light);
 }
 
-.products {
+/* История создания */
+.history-section {
   background-color: #FAFAFA;
 }
 
-.process {
+/* Гарантии */
+.guarantees-section {
   background-color: var(--retro-light);
 }
 
-.clients {
+/* Social Proof */
+.social-proof-section {
   background-color: #FAFAFA;
 }
 
-.contact {
+/* Форма заказа */
+.contact-form-section {
   background-color: var(--retro-dark);
   color: var(--retro-light);
 }
 
-.contact h2 {
+.contact-form-section h2 {
   color: var(--retro-light);
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+/* FAQ секция */
+.faq-section {
+  background-color: var(--retro-light);
+}
+
+/* Заголовки секций */
+.matrix-section h2,
+.history-section h2,
+.guarantees-section h2,
+.social-proof-section h2,
+.faq-section h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--retro-dark);
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+/* Форма заказа - максимальная ширина и центрирование */
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Responsive стили для секций */
+@media (max-width: 768px) {
+  .matrix-section,
+  .history-section,
+  .guarantees-section,
+  .social-proof-section,
+  .contact-form-section,
+  .faq-section {
+    padding: 3rem 0;
+  }
+
+  .contact-form-section h2 {
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+    margin-bottom: 2rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.25rem;
+  }
+
+  .btn-submit {
+    font-size: 1rem;
+    padding: 0.875rem 1.5rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .hero-section {
+    padding: 4rem 0;
+  }
+}
+
+/* CSS Grid адаптивность для будущих секций */
+.grid-responsive {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .grid-responsive {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-responsive {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+  }
+}
+
+/* Состояние загрузки для кнопки отправки */
+.btn-submit.loading {
+  opacity: 0.7;
+  cursor: not-allowed;
+  position: relative;
+}
+
+.btn-submit.loading::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  margin: auto;
+  border: 2px solid transparent;
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
 }
 
 /* ============================================================
@@ -302,6 +559,20 @@
   resize: vertical;
 }
 
+.form-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.form-checkbox input[type="checkbox"] {
+  width: auto;
+  margin-top: 0.125rem;
+  flex-shrink: 0;
+}
+
 /* ============================================================
    FOOTER
    ============================================================ */
@@ -378,12 +649,95 @@
   }
 }
 
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Классы анимаций */
 .animate-fade-in-up {
   animation: fadeInUp 0.8s ease-out;
 }
 
+.animate-slide-in-left {
+  animation: slideInLeft 0.8s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.8s ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.8s ease-out;
+}
+
 .animate-pulse {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Начальные состояния для элементов с анимацией */
+section:not(.hero-section) {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+section:not(.hero-section).animate-fade-in-up {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Анимация для Hero элементов при загрузке */
+.hero-title,
+.hero-subtitle,
+.hero-image,
+.hero-cta {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+body.app-loaded .hero-title {
+  animation: fadeInUp 0.8s ease-out 0.2s forwards;
+}
+
+body.app-loaded .hero-subtitle {
+  animation: fadeInUp 0.8s ease-out 0.4s forwards;
+}
+
+body.app-loaded .hero-image {
+  animation: scaleIn 0.8s ease-out 0.6s forwards;
+}
+
+body.app-loaded .hero-cta {
+  animation: fadeInUp 0.8s ease-out 0.8s forwards;
 }
 
 /* ============================================================

@@ -39,6 +39,16 @@ class SmoothScroll {
             }
         });
 
+        // Обработка кликов по кнопкам с data-scroll-to атрибутом
+        document.addEventListener('click', (event) => {
+            const button = event.target.closest('[data-scroll-to]');
+            if (button) {
+                event.preventDefault();
+                const targetId = button.getAttribute('data-scroll-to');
+                this.scrollToAnchor(`#${targetId}`);
+            }
+        });
+
         // Обработка изменения хеша в URL
         window.addEventListener('hashchange', () => {
             if (!this.isScrolling) {
