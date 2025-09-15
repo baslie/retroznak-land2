@@ -7,9 +7,9 @@ class ProductSelector {
         this.selectedProduct = null;
         this.formHandler = null;
         this.productData = {
-            'Обычный': { price: 1990, name: 'Обычный' },
-            'Петроградский': { price: 4300, name: 'Петроградский' },
-            'Ленинградский VIP': { price: 9300, name: 'Ленинградский VIP' }
+            'obyichnyiy': { price: 1990, name: 'Обычный ретрознак' },
+            'petrogradskiy': { price: 4300, name: 'Петроградский ретрознак' },
+            'leningradskiy': { price: 9300, name: 'Ленинградский ретрознак' }
         };
         this.init();
     }
@@ -46,12 +46,22 @@ class ProductSelector {
                 event.preventDefault();
                 event.stopPropagation();
 
-                const productCard = button.closest('.product-card');
-                if (productCard) {
-                    const productModel = this.extractModelFromCard(productCard);
-                    if (productModel) {
-                        this.selectProduct(productModel);
-                        this.scrollToForm();
+                // Получаем модель из data-атрибута кнопки
+                const productModel = button.getAttribute('data-model');
+                const productPrice = button.getAttribute('data-price');
+
+                if (productModel && this.productData[productModel]) {
+                    this.selectProduct(productModel);
+                    this.scrollToForm();
+                } else {
+                    // Fallback - пытаемся извлечь из карточки
+                    const productCard = button.closest('.product-card');
+                    if (productCard) {
+                        const extractedModel = this.extractModelFromCard(productCard);
+                        if (extractedModel) {
+                            this.selectProduct(extractedModel);
+                            this.scrollToForm();
+                        }
                     }
                 }
             });
@@ -64,7 +74,16 @@ class ProductSelector {
      * @returns {string|null} - Модель продукта
      */
     extractModelFromCard(card) {
-        // Ищем модель в data-атрибуте
+        // Ищем модель в data-атрибуте кнопки заказа
+        const orderButton = card.querySelector('.btn-order');
+        if (orderButton) {
+            const dataModel = orderButton.getAttribute('data-model');
+            if (dataModel && this.productData[dataModel]) {
+                return dataModel;
+            }
+        }
+
+        // Ищем модель в data-атрибуте самой карточки
         const dataModel = card.getAttribute('data-model');
         if (dataModel && this.productData[dataModel]) {
             return dataModel;
@@ -73,24 +92,17 @@ class ProductSelector {
         // Ищем по тексту в заголовке карточки
         const titleElement = card.querySelector('h3, .product-title, [data-product-title]');
         if (titleElement) {
-            const title = titleElement.textContent.trim();
+            const title = titleElement.textContent.trim().toLowerCase();
 
-            // Проверяем точные совпадения
-            for (const model of Object.keys(this.productData)) {
-                if (title.toLowerCase().includes(model.toLowerCase())) {
-                    return model;
-                }
+            // Дополнительные варианты поиска по новым названиям
+            if (title.includes('петроград')) {
+                return 'petrogradskiy';
             }
-
-            // Дополнительные варианты поиска
-            if (title.toLowerCase().includes('петроград')) {
-                return 'Петроградский';
+            if (title.includes('ленинград')) {
+                return 'leningradskiy';
             }
-            if (title.toLowerCase().includes('ленинград') && title.toLowerCase().includes('vip')) {
-                return 'Ленинградский VIP';
-            }
-            if (title.toLowerCase().includes('обычный') || title.toLowerCase().includes('базовый') || title.toLowerCase().includes('стандарт')) {
-                return 'Обычный';
+            if (title.includes('обычный') || title.includes('базовый') || title.includes('стандарт')) {
+                return 'obyichnyiy';
             }
         }
 

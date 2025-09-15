@@ -276,17 +276,23 @@ class FormHandler {
      * @return array Результат валидации
      */
     private function validateModel($model) {
-        $validModels = ['Петроградский', 'Ленинградский VIP', 'Обычный'];
+        // Словарь соответствия данных из формы и читаемых названий
+        $modelMap = [
+            'obyichnyiy' => 'Обычный ретрознак',
+            'petrogradskiy' => 'Петроградский ретрознак',
+            'leningradskiy' => 'Ленинградский ретрознак'
+        ];
 
         if (empty($model)) {
             return ['isValid' => false, 'message' => 'Выбор модели обязателен'];
         }
 
-        if (!in_array($model, $validModels)) {
+        if (!array_key_exists($model, $modelMap)) {
             return ['isValid' => false, 'message' => 'Некорректная модель'];
         }
 
-        return ['isValid' => true, 'value' => $model];
+        // Возвращаем читаемое название модели для использования в письме
+        return ['isValid' => true, 'value' => $modelMap[$model]];
     }
     
     /**

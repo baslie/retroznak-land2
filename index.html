@@ -132,10 +132,214 @@
         </section>
 
         <!-- 2. Matrix Section (Продуктовая матрица) -->
-        <section id="matrix" class="matrix-section" role="region" aria-labelledby="matrix-title">
-            <div class="container mx-auto px-4">
-                <h2 id="matrix-title">Выберите ваш ретрознак</h2>
-                <!-- Матрица продуктов будет реализована в следующих историях -->
+        <section id="matrix" class="matrix-section py-16 bg-gray-50" role="region" aria-labelledby="matrix-title">
+            <div class="container mx-auto px-4 max-w-7xl">
+                <div class="text-center mb-12">
+                    <h2 id="matrix-title" class="text-3xl md:text-4xl font-bold text-retro-dark mb-4">
+                        Выберите ваш ретрознак
+                    </h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                        Три варианта домовых знаков с разным уровнем качества и функциональности
+                    </p>
+                </div>
+
+                <!-- Product Grid -->
+                <div class="product-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+
+                    <!-- Обычный ретрознак -->
+                    <article class="product-card bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-105"
+                             itemscope itemtype="https://schema.org/Product">
+                        <meta itemprop="name" content="Обычный ретрознак">
+                        <meta itemprop="price" content="1990">
+                        <meta itemprop="priceCurrency" content="RUB">
+                        <meta itemprop="availability" content="https://schema.org/InStock">
+
+                        <div class="product-image-container relative">
+                            <img src="images/products/obyichnyiy-retroznak.svg"
+                                 alt="Обычный ретрознак - сталь 1мм, размер 47×35 см"
+                                 class="w-full h-64 object-cover"
+                                 itemprop="image">
+                            <div class="absolute top-4 left-4 bg-retro-blue text-white px-3 py-1 rounded-full text-sm font-medium">
+                                Базовый
+                            </div>
+                        </div>
+
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-retro-dark mb-2" itemprop="name">
+                                Обычный ретрознак
+                            </h3>
+                            <div class="price-block mb-4">
+                                <span class="text-3xl font-bold text-retro-gold" itemprop="price">1990₽</span>
+                            </div>
+
+                            <ul class="text-sm text-gray-600 space-y-2 mb-6">
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-retro-green rounded-full mr-3"></span>
+                                    Сталь 1 мм, плоский дизайн
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-retro-green rounded-full mr-3"></span>
+                                    Порошковая покраска + УФ-печать
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-retro-green rounded-full mr-3"></span>
+                                    Защита полимерной эмалью
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-retro-green rounded-full mr-3"></span>
+                                    Размер 47×35 см, БЕЗ подсветки
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-retro-green rounded-full mr-3"></span>
+                                    Гарантия 3 года
+                                </li>
+                            </ul>
+
+                            <button class="btn-order w-full bg-retro-blue text-white py-3 px-6 rounded-lg font-medium
+                                         hover:bg-blue-800 transition-colors duration-300 focus:outline-none focus:ring-2
+                                         focus:ring-retro-blue focus:ring-offset-2"
+                                    data-model="obyichnyiy"
+                                    data-price="1990"
+                                    aria-label="Заказать Обычный ретрознак за 1990 рублей">
+                                Заказать Обычный
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Петроградский ретрознак (Featured) -->
+                    <article class="product-card product-card--featured bg-white rounded-lg shadow-lg overflow-hidden
+                                   transition-all duration-300 hover:shadow-xl hover:scale-105 ring-2 ring-retro-gold"
+                             itemscope itemtype="https://schema.org/Product">
+                        <meta itemprop="name" content="Петроградский ретрознак">
+                        <meta itemprop="price" content="4300">
+                        <meta itemprop="priceCurrency" content="RUB">
+                        <meta itemprop="availability" content="https://schema.org/InStock">
+
+                        <div class="product-image-container relative">
+                            <img src="images/products/petrogradskiy-retroznak.svg"
+                                 alt="Петроградский ретрознак - сталь 0,7мм с матовыми стеклами, размер 47×34 см"
+                                 class="w-full h-64 object-cover"
+                                 itemprop="image">
+                            <div class="absolute top-4 left-4 bg-retro-gold text-white px-3 py-1 rounded-full text-sm font-medium">
+                                Популярный выбор
+                            </div>
+                            <div class="absolute top-4 right-4 bg-red-500 text-white px-2 py-1 rounded text-xs font-bold">
+                                ХИТ!
+                            </div>
+                        </div>
+
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-retro-dark mb-2" itemprop="name">
+                                Петроградский ретрознак
+                            </h3>
+                            <div class="price-block mb-4">
+                                <span class="text-3xl font-bold text-retro-gold" itemprop="price">4300₽</span>
+                                <span class="text-sm text-gray-500 ml-2">самый популярный</span>
+                            </div>
+
+                            <ul class="text-sm text-gray-600 space-y-2 mb-6">
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-retro-green rounded-full mr-3"></span>
+                                    Сталь 0,7 мм, матовые стекла
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-retro-green rounded-full mr-3"></span>
+                                    Полимерная покраска, матовые стекла
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-retro-green rounded-full mr-3"></span>
+                                    Фирменное клеймо «РЗ»
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-retro-green rounded-full mr-3"></span>
+                                    Размер 47×34 см, БЕЗ подсветки
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-retro-green rounded-full mr-3"></span>
+                                    Гарантия 3 года
+                                </li>
+                            </ul>
+
+                            <button class="btn-order w-full bg-retro-gold text-white py-3 px-6 rounded-lg font-medium
+                                         hover:bg-yellow-600 transition-colors duration-300 focus:outline-none focus:ring-2
+                                         focus:ring-retro-gold focus:ring-offset-2"
+                                    data-model="petrogradskiy"
+                                    data-price="4300"
+                                    aria-label="Заказать Петроградский ретрознак за 4300 рублей">
+                                Заказать Петроградский
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Ленинградский ретрознак -->
+                    <article class="product-card bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-105"
+                             itemscope itemtype="https://schema.org/Product">
+                        <meta itemprop="name" content="Ленинградский ретрознак">
+                        <meta itemprop="price" content="9300">
+                        <meta itemprop="priceCurrency" content="RUB">
+                        <meta itemprop="availability" content="https://schema.org/InStock">
+
+                        <div class="product-image-container relative">
+                            <img src="images/products/leningradskiy-retroznak.svg"
+                                 alt="Ленинградский ретрознак - нержавеющая сталь с LED подсветкой, размер 52×40 см"
+                                 class="w-full h-64 object-cover"
+                                 itemprop="image">
+                            <div class="absolute top-4 left-4 bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                Максимальное качество
+                            </div>
+                            <div class="absolute top-4 right-4 bg-green-500 text-white px-2 py-1 rounded text-xs font-bold">
+                                LED
+                            </div>
+                        </div>
+
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-retro-dark mb-2" itemprop="name">
+                                Ленинградский ретрознак
+                            </h3>
+                            <div class="price-block mb-4">
+                                <span class="text-3xl font-bold text-retro-gold" itemprop="price">9300₽</span>
+                                <span class="text-sm text-gray-500 ml-2">с подсветкой</span>
+                            </div>
+
+                            <ul class="text-sm text-gray-600 space-y-2 mb-6">
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-retro-green rounded-full mr-3"></span>
+                                    Нержавеющая сталь 0,8 мм
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-retro-green rounded-full mr-3"></span>
+                                    Полимерная покраска + полимерная эмаль
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-retro-green rounded-full mr-3"></span>
+                                    LED подсветка (5 Вт), провод 1,5 м
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-retro-green rounded-full mr-3"></span>
+                                    Размер 52×40 см — как в оригинале 1950-х
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-retro-green rounded-full mr-3"></span>
+                                    ПОЖИЗНЕННАЯ гарантия на корпус
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-retro-green rounded-full mr-3"></span>
+                                    Идеально для приморских районов
+                                </li>
+                            </ul>
+
+                            <button class="btn-order w-full bg-purple-600 text-white py-3 px-6 rounded-lg font-medium
+                                         hover:bg-purple-700 transition-colors duration-300 focus:outline-none focus:ring-2
+                                         focus:ring-purple-600 focus:ring-offset-2"
+                                    data-model="leningradskiy"
+                                    data-price="9300"
+                                    aria-label="Заказать Ленинградский ретрознак за 9300 рублей">
+                                Заказать Ленинградский
+                            </button>
+                        </div>
+                    </article>
+
+                </div>
             </div>
         </section>
 
@@ -182,12 +386,13 @@
                     </div>
                     <div class="form-group">
                         <label for="model" class="form-label">Модель ретрознака *</label>
-                        <select id="model" name="model" required class="form-select">
+                        <select id="model" name="model" required class="form-select" aria-describedby="model-help">
                             <option value="">Выберите модель</option>
-                            <option value="Обычный">Обычный (1990₽)</option>
-                            <option value="Петроградский">Петроградский (4300₽)</option>
-                            <option value="Ленинградский VIP">Ленинградский VIP (9300₽)</option>
+                            <option value="obyichnyiy" data-price="1990">Обычный ретрознак (1990₽)</option>
+                            <option value="petrogradskiy" data-price="4300">Петроградский ретрознак (4300₽)</option>
+                            <option value="leningradskiy" data-price="9300">Ленинградский ретрознак (9300₽)</option>
                         </select>
+                        <small id="model-help" class="form-help-text">Выбранная модель определит итоговую стоимость</small>
                     </div>
                     <div class="form-group">
                         <label for="address" class="form-label">Адрес установки</label>
