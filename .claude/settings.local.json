@@ -24,7 +24,9 @@
       "mcp__browsermcp__browser_click",
       "mcp__browsermcp__browser_get_console_logs",
       "Bash(git pull:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ],
     "deny": [],
     "ask": []
