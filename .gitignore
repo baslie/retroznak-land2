@@ -1,2 +1,28 @@
-docs/send-form.php 
-php/send-form.php 
+# Файлы конфигурации с секретами
+.env
+.env.local
+.env.*.local
+
+# Временные файлы
+*.tmp
+*.log
+*.cache
+
+# Системные файлы
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE файлы
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Папки зависимостей (если будут использоваться)
+node_modules/
+vendor/
+
+# Файлы сборки
+dist/
+build/
